@@ -59,7 +59,6 @@ export default function ContactPage() {
 
   return (
     <div ref={ref} className="pt-20">
-      {/* ===== HERO SECTION ===== */}
       <section className="bg-gradient-to-br from-[#1e2847] to-[#2a3555] text-white py-20">
         <div className="container mx-auto px-6 text-center">
           <motion.div
@@ -76,11 +75,10 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* ===== CONTACT SECTION ===== */}
       <section className="bg-white py-20">
         <div className="container mx-auto px-6">
           <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
-            {/* Contact Info Cards */}
+
             <div className="space-y-6">
               {[
                 {
@@ -146,8 +144,6 @@ export default function ContactPage() {
                   )}
                 </motion.div>
               ))}
-
-              {/* VAT Number */}
               <motion.div
                 variants={itemVariants}
                 initial="hidden"
@@ -167,7 +163,7 @@ export default function ContactPage() {
               transition={{ duration: 0.6 }}
               className="bg-gradient-to-br from-gray-50 to-white p-8 rounded-2xl border border-gray-200 shadow-xl"
             >
-              <h3 className="text-2xl font-bold mb-6 text-[#1e2847]">Send Us a Message</h3>
+              <h3 className="text-2xl font-bold mb-6 text-[#1e2847]">Request a Service</h3>
               <form onSubmit={handleSubmit} className="space-y-4">
                 {[
                   { label: "Full Name *", name: "name", type: "text", placeholder: "Your name" },
@@ -253,7 +249,7 @@ export default function ContactPage() {
                   whileTap={{ scale: 0.98 }}
                   className="w-full bg-orange-500 text-white py-4 rounded-lg hover:bg-orange-600 transition-all flex items-center justify-center gap-2 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {isSubmitting ? "Sending..." : "Send Message"}
+                  {isSubmitting ? "Sending..." : "Send Request"}
                   <Send size={20} />
                 </motion.button>
               </form>

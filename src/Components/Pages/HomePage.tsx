@@ -137,7 +137,7 @@ export default function HomePage() {
                   className="w-full h-full object-cover"
                 />
               </motion.div>
-             
+             <div className="flex items-center space-x-4">
               <motion.div
                 initial={{ height: 0 }}
                 animate={{ height: 200 }}
@@ -164,6 +164,7 @@ export default function HomePage() {
                   </motion.li>
                 ))}
               </motion.ul>
+              </div>
             </motion.div>
 
             <motion.div
@@ -239,7 +240,7 @@ export default function HomePage() {
                 key={i}
                 initial={{ opacity: 0, y: 50, rotateX: -30 }}
                 whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
+                transition={{ duration: 0.6, delay: i * 0.05 }}
                 viewport={{ once: true }}
                 whileHover={{ y: -10, rotateY: 5, rotateX: 5, scale: 1 }}
                 className="group relative"
@@ -364,18 +365,16 @@ export default function HomePage() {
           ].map((service, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.05 }}
+              viewport={{ once: true, amount: 0.2 }}
               whileHover={{
                 scale: 1.05,
-                rotateY: 10,
-                rotateX: 5,
-                z: 20,
+                rotateY: 0,
+                rotateX: 0,
               }}
-              style={{ perspective: 1000, transformStyle: "preserve-3d" }}
-              className="group"
+              className="group will-change-transform md:[transform-style:preserve-3d] md:[perspective:1000px]"
             >
               <div className="bg-gradient-to-br from-orange-50 to-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all border border-orange-100 relative overflow-hidden">
                 <motion.div
@@ -384,6 +383,7 @@ export default function HomePage() {
                   whileHover={{ scaleX: 1 }}
                   transition={{ duration: 0.4 }}
                 />
+
                 <div className="flex items-center gap-3">
                   <motion.div
                     animate={{ scale: [1, 1.2, 1] }}
@@ -394,21 +394,24 @@ export default function HomePage() {
                     }}
                     className="w-3 h-3 bg-orange-500 rounded-full"
                   />
+
                   <motion.span
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
                     transition={{
                       duration: 1.2,
                       delay: 0.2 + index * 0.1,
                       type: "spring",
                     }}
-                    className="text-gray-700 font-medium text-base md:text-lg"
+                    className="text-gray-800 font-semibold text-base md:text-lg"
                   >
                     {service}
                   </motion.span>
                 </div>
               </div>
             </motion.div>
+
           ))}
         </div>
 

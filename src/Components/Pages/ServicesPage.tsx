@@ -1,4 +1,6 @@
 import { motion } from 'framer-motion';
+import {Link} from "react-router-dom"
+import { ArrowRight } from 'lucide-react';
 import event from "../../assets/images/event.jpg"
 import cleaning from "../../assets/images/cleaning.png"
 import printing from "../../assets/images/printing.jpeg"
@@ -106,7 +108,7 @@ export default function ServicesPage() {
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.05 }}
+                transition={{ duration: 0.6 }}
                 viewport={{ once: true, amount: 0.3 }}
                 className="space-y-4"
               >
@@ -128,8 +130,6 @@ export default function ServicesPage() {
                     {service.title}
                   </h3>
                 </motion.div>
-
-                {/* Service Image Card */}
                 <motion.div
                   whileHover={{ y: -5, scale: 1.01 }}
                   transition={{ duration: 0.1 }}
@@ -146,8 +146,6 @@ export default function ServicesPage() {
                         alt={service.title}
                         className="w-full h-full object-cover"
                       />
-                      
-                      {/* Gradient overlay on hover */}
                       <div className="absolute inset-0 bg-gradient-to-t from-[#1e2847]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
                   </div>
@@ -159,9 +157,41 @@ export default function ServicesPage() {
                     {service.description}
                   </p>
                 </div>
+                
               </motion.div>
             ))}
           </div>
+          {/* Button */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center"
+        >
+          <Link to="/contact">
+            <motion.button
+              whileHover={{
+                scale: 1.1,
+                rotateZ: [0, -2, 2, 0],
+                boxShadow: "0 20px 60px rgba(255, 149, 0, 0.4)",
+              }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-12 py-6 rounded-2xl shadow-2xl relative overflow-hidden group"
+            >
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-orange-600 to-orange-700"
+                initial={{ x: "-100%" }}
+                whileHover={{ x: "100%" }}
+                transition={{ duration: 0.5 }}
+              />
+              <span className="relative z-10 text-xl flex items-center gap-3">
+                Request a Service
+                <ArrowRight className="group-hover:translate-x-2 transition-transform" />
+              </span>
+            </motion.button>
+          </Link>
+          </motion.div>
 
          
 
