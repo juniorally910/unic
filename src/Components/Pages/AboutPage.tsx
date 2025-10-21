@@ -57,7 +57,7 @@ export default function AboutPage() {
             animate={isInView ? 'visible' : 'hidden'}
             className="max-w-6xl mx-auto"
           >
-            <motion.div variants={itemVariants} className="bg-gradient-to-br from-orange-50 to-white rounded-2xl shadow-xl p-8 md:p-12 mb-12 border border-orange-100">
+            <div  className="bg-gradient-to-br from-orange-50 to-white rounded-2xl shadow-xl p-8 md:p-12 mb-12 border border-orange-100">
               <p className="text-gray-700 mb-6 leading-relaxed">
                 UNIC Ltd is an integrity company which does a vibrant, multifaceted business 
                 dedicated to providing high-quality goods and services in a range of sectors. 
@@ -72,13 +72,11 @@ export default function AboutPage() {
                 management, insurance & mobile money agency and Brokers, production of consumer 
                 food and beverages, IT & Electronics materials, Printing Services, etc.
               </p>
-            </motion.div>
+            </div>
 
             {/* Mission, Vision, Values, Team Leader */}
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <motion.div
-                variants={itemVariants}
-                whileHover={{ y: -10 }}
+              <div
                 className="bg-gradient-to-br from-orange-500 to-orange-600 text-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-shadow"
               >
                 <Target className="w-12 h-12 mb-4 text-orange-100" />
@@ -87,11 +85,9 @@ export default function AboutPage() {
                   To deliver superior goods and services that improve people's lives, uplift communities, 
                   and spur economic expansion via ethical and creative business methods.
                 </p>
-              </motion.div>
+              </div>
 
-              <motion.div
-                variants={itemVariants}
-                whileHover={{ y: -10 }}
+              <div
                 className="bg-gradient-to-br from-[#1e2847] to-[#2a3555] text-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-shadow"
               >
                 <Eye className="w-12 h-12 mb-4 text-orange-400" />
@@ -100,7 +96,7 @@ export default function AboutPage() {
                   To become a leading multi-sector enterprise recognized for integrity, quality, 
                   sustainability, and innovation in every industry we serve.
                 </p>
-              </motion.div>
+              </div>
 
               <motion.div
                 variants={itemVariants}

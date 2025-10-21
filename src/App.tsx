@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import ScrollToTop from "./Components/ScrollToTop";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
@@ -10,12 +10,12 @@ import ContactPage from "./Components/Pages/ContactPage";
 
 
 
-function App() {
 
+function App() {
 
   return (
     <>
-      <Router>
+      
         <ScrollToTop />
         <Navbar />
         <Routes>
@@ -25,9 +25,10 @@ function App() {
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/projects" element ={<ProjectsPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          
         </Routes>
-        < Footer />
-      </Router>
+       <Footer />
+      
     </>
   )
 }

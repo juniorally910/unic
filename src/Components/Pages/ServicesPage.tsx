@@ -177,7 +177,7 @@ export default function ServicesPage() {
                 boxShadow: "0 20px 60px rgba(255, 149, 0, 0.4)",
               }}
               whileTap={{ scale: 0.95 }}
-              className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-12 py-6 rounded-2xl shadow-2xl relative overflow-hidden group"
+              className="bg-gradient-to-r mt-6 from-orange-500 to-orange-600 text-white px-12 py-6 rounded-2xl shadow-2xl relative overflow-hidden group"
             >
               <motion.div
                 className="absolute inset-0 bg-gradient-to-r from-orange-600 to-orange-700"

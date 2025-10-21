@@ -2,7 +2,6 @@ import { Phone, Mail, Globe, MapPin, Send } from "lucide-react";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { toast } from "sonner";
 
 export default function ContactPage() {
   const ref = useRef(null);
@@ -16,39 +15,51 @@ export default function ContactPage() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      const response = await fetch('https://formspree.io/f/xnngywba', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          _subject: `New Contact: ${formData.name} - ${formData.service}`,
+          _replyto: formData.email,
+        }),
+      });
 
-    const subject = encodeURIComponent(`Inquiry from ${formData.name} - ${formData.service}`);
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nService Interest: ${formData.service}\n\nMessage:\n${formData.message}`
-    );
-    const mailtoLink = `mailto:theunicltd@gmail.com?subject=${subject}&body=${body}`;
-    window.location.href = mailtoLink;
-
-    toast.success("Opening your email client...", {
-      description: "Please send the pre-filled email to complete your inquiry.",
-    });
-
-    setIsSubmitting(false);
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      service: "",
-      message: "",
-    });
+      if (response.ok) {
+        alert('✅ Message sent successfully! We will get back to you soon.');
+        // Reset form
+        setFormData({ 
+          name: '', 
+          email: '', 
+          phone: '', 
+          service: '', 
+          message: '' 
+        });
+      } else {
+        alert('❌ Failed to send message. Please try again or contact us directly.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('❌ An error occurred. Please check your internet connection and try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
+    const { name, value } = e.target;
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [name]: value,
     });
   };
 
@@ -84,7 +95,7 @@ export default function ContactPage() {
                 {
                   icon: <Phone className="w-6 h-6 text-white" />,
                   title: "Phone Numbers",
-                  lines: ["+250 788 477 057", "+250 788 800 204", "+250 785 817 599"],
+                  lines: ["+250 788 477 057", "+250 788 500 204", "+250 785 817 599"],
                   link: null,
                 },
                 {
@@ -198,7 +209,7 @@ export default function ContactPage() {
                 <div>
                   <label className="block text-sm mb-2 text-gray-700">Service Interest *</label>
                   <select
-                  aria-label="Select the service you are interested in"
+                    aria-label="Select the service you are interested in"
                     name="service"
                     required
                     value={formData.service}
@@ -214,9 +225,9 @@ export default function ContactPage() {
                       "Logistics & Delivery",
                       "Electronics Equipments",
                       "Events Management",
-                      "It and Printing",
+                      "IT and Printing",
                       "Outside Catering",
-                      "Supply of construcyion materials",
+                      "Supply of Construction Materials",
                       "Agriculture Solutions",
                       "E-commerce",
                     ].map((service) => (
@@ -237,7 +248,7 @@ export default function ContactPage() {
                     value={formData.message}
                     onChange={handleChange}
                     className="w-full px-4 py-3 rounded-lg bg-white border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/50 transition-all resize-none"
-                    placeholder="Tell us about your inquiry..."
+                    placeholder="Tell us in details about the service you would like us to help you with..."
                   ></textarea>
                 </div>
 
