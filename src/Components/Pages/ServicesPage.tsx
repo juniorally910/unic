@@ -88,7 +88,6 @@ export default function ServicesPage() {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            
 
             <h1 className="mb-4 text-4xl md:text-5xl font-bold text-white">Our Services</h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
@@ -99,7 +98,6 @@ export default function ServicesPage() {
         </div>
       </div>
 
-      
       <div className="bg-white py-20">
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-12 max-w-7xl mx-auto">
@@ -109,10 +107,10 @@ export default function ServicesPage() {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                viewport={{ once: true, amount: 0.3 }}
+                viewport={{ once: true, amount: 0.2 }}
                 className="space-y-4"
               >
-                {/* Service Title Header */}
+
                 <motion.div
                   whileHover={{ scale: 1.02 }}
                   className="bg-gradient-to-r from-[#1e2847] to-[#2a3555] px-8 py-4 rounded-2xl shadow-lg"
@@ -151,7 +149,6 @@ export default function ServicesPage() {
                   </div>
                 </motion.div>
 
-                {/* Service Description */}
                 <div className="bg-gradient-to-br from-orange-50 to-white p-6 rounded-xl border border-orange-100 shadow-md">
                   <p className="text-gray-700" style={{ lineHeight: '1.75' }}>
                     {service.description}
@@ -161,12 +158,12 @@ export default function ServicesPage() {
               </motion.div>
             ))}
           </div>
-          {/* Button */}
+
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.2 }}
           className="text-center"
         >
           <Link to="/contact">
@@ -193,14 +190,11 @@ export default function ServicesPage() {
           </Link>
           </motion.div>
 
-         
-
-          {/* Core Strengths */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.2 }}
             className="mt-20"
           >
             <h2 className="text-center mb-12">
@@ -236,7 +230,7 @@ export default function ServicesPage() {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: true, amount: 0.2 }}
                   whileHover={{ y: -10, scale: 1.05 }}
                   className="bg-gradient-to-br from-orange-50 to-white p-6 rounded-2xl border border-orange-100 shadow-lg hover:shadow-2xl transition-all"
                 >

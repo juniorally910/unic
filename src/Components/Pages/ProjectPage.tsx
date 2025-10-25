@@ -1,9 +1,4 @@
-import { useRef } from 'react';
 import { motion} from 'framer-motion';
-
-
-
-
 interface Project {
   number: string;
   title: string;
@@ -16,9 +11,6 @@ interface WhyChooseUsItem {
 }
 
 export default function ProjectsPage() {
-  const ref = useRef(null);
-  
-
   const caseStudy = {
     title: 'LIQUID SOAP',
     sections: [
@@ -91,7 +83,7 @@ export default function ProjectsPage() {
   };
 
   return (
-    <div ref={ref} className="pt-20">
+    <div className="pt-20">
       <div className="bg-gradient-to-br from-[#1e2847] to-[#2a3555] text-white py-20">
         <div className="container mx-auto px-6">
           <motion.div
@@ -109,14 +101,13 @@ export default function ProjectsPage() {
         </div>
       </div>
 
-      {/* Case Study Section */}
       <div className="bg-white py-20">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.2 }}
             className="mb-12"
           >
             <h2 className="mb-2 text-3xl md:text-4xl font-bold">
@@ -129,12 +120,12 @@ export default function ProjectsPage() {
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-12 mb-20">
-            {/* Left Side - Case Study Details */}
+   
             <motion.div
               variants={containerVariants}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.2 }}
               className="space-y-8"
             >
               {caseStudy.sections.map((section, index) => (
@@ -150,12 +141,11 @@ export default function ProjectsPage() {
               ))}
             </motion.div>
 
-            {/* Right Side - Video */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.2 }}
               className="relative"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500 to-orange-400 rounded-2xl blur-2xl opacity-20"></div>
@@ -173,18 +163,13 @@ export default function ProjectsPage() {
                   <source src="/soap.mp4" type="video/webm" />
                   Your browser does not support the video tag.
                 </video>
-                {/* Fallback message */}
-                <div className="absolute inset-0 flex items-center justify-center text-white text-sm pointer-events-none">
-                  <p className="bg-black/50 px-4 py-2 rounded">Loading video...</p>
-                </div>
               </div>
 
-              {/* Quote Box */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, amount: 0.2 }}
                 className="mt-8 bg-gradient-to-r from-[#1e2847] to-[#2a3555] text-white p-8 rounded-2xl"
               >
                 <div className="text-6xl text-orange-500 mb-4">"</div>
@@ -195,14 +180,13 @@ export default function ProjectsPage() {
             </motion.div>
           </div>
 
-          {/* Our Projects & Why Choose Us Section */}
           <div className="grid md:grid-cols-2 gap-12">
             
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.2 }}
             >
               <h2 className="mb-8 text-3xl md:text-4xl font-bold">
                 <span className="text-[#1e2847]">Our</span>
@@ -217,7 +201,7 @@ export default function ProjectsPage() {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: index * 0.1 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: true, amount: 0.2 }}
                     className="bg-gradient-to-br from-orange-50 to-white p-6 rounded-xl border border-orange-100"
                   >
                     <div className="flex items-center gap-3 mb-4">
@@ -244,7 +228,7 @@ export default function ProjectsPage() {
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.2 }}
             >
               <h2 className="mb-2 text-3xl md:text-4xl font-bold">
                 <span className="text-[#1e2847]">Why</span>
@@ -260,7 +244,7 @@ export default function ProjectsPage() {
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: true, amount: 0.2 }}
                     whileHover={{ x: 5 }}
                     className="flex items-center gap-4 bg-white p-4 rounded-lg shadow-md border border-orange-100"
                   >
@@ -277,7 +261,7 @@ export default function ProjectsPage() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.2 }}
             className="text-center mt-20"
           >
             <h1 className="text-[#1e2847] text-4xl md:text-5xl font-bold">Thank You.</h1>

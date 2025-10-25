@@ -2,6 +2,7 @@ import { Phone, Mail, Globe, MapPin, Send } from "lucide-react";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
+import emailjs from '@emailjs/browser';
 
 export default function ContactPage() {
   const ref = useRef(null);
@@ -14,40 +15,51 @@ export default function ContactPage() {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  
+  // Your EmailJS credentials
+  const EMAILJS_SERVICE_ID = 'service_amlljzg';
+  const EMAILJS_TEMPLATE_ID = 'template_sldrfx5';
+  const EMAILJS_PUBLIC_KEY = '5m6WED89sbol9LKlO';
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('https://formspree.io/f/xnngywba', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...formData,
-          _subject: `New Contact: ${formData.name} - ${formData.service}`,
-          _replyto: formData.email,
+      // Prepare template parameters
+      const templateParams = {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone || 'Not provided',
+        service: formData.service,
+        message: formData.message,
+        submission_date: new Date().toLocaleString('en-US', {
+          dateStyle: 'full',
+          timeStyle: 'short',
         }),
-      });
+      };
 
-      if (response.ok) {
-        alert('✅ Message sent successfully! We will get back to you soon.');
-        // Reset form
-        setFormData({ 
-          name: '', 
-          email: '', 
-          phone: '', 
-          service: '', 
-          message: '' 
-        });
-      } else {
-        alert('❌ Failed to send message. Please try again or contact us directly.');
-      }
+      // Send email using EmailJS
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        templateParams,
+        EMAILJS_PUBLIC_KEY
+      );
+
+      alert('✅ Message sent successfully! We will get back to you soon.');
+      
+      // Reset form
+      setFormData({ 
+        name: '', 
+        email: '', 
+        phone: '', 
+        service: '', 
+        message: '' 
+      });
     } catch (error) {
-      console.error('Error:', error);
-      alert('❌ An error occurred. Please check your internet connection and try again.');
+      console.error('EmailJS Error:', error);
+      alert('❌ Failed to send message. Please try again or contact us directly.');
     } finally {
       setIsSubmitting(false);
     }

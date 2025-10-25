@@ -9,9 +9,6 @@ import integrity from "../../assets/images/values.png"
 export default function HomePage() {
   const containerRef = useRef(null);
   
-
-  
-
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -23,7 +20,7 @@ export default function HomePage() {
   };
 
   return (
-    <div ref={containerRef} className="pt-20 mt-5 overflow-hidden">
+    <div ref={containerRef} className="pt-18 mt-4 overflow-hidden">
       {/* ================= HERO SECTION ================= */}
       <div className="relative min-h-screen bg-gradient-to-br from-[#1e2847] via-[#2a3555] to-[#1e2847] overflow-hidden">
        
@@ -263,13 +260,13 @@ export default function HomePage() {
 
     
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
         className="mt-20 text-center"
       >
-        <div className="max-w-6xl mx-auto">
+        <div className="w-full mx-auto">
           <div className="bg-gradient-to-r from-[#1e2847] via-[#2a3555] to-[#1e2847] text-white p-12 rounded-3xl shadow-2xl relative overflow-hidden">
             <motion.div
               animate={{
@@ -284,20 +281,23 @@ export default function HomePage() {
             />
             
             <div className="relative z-10">
-              <h2 className="mb-6 text-white">
+              <h2 className="mb-6 text-white text-3xl">
                 <span style={{ 
                   background: 'linear-gradient(to right, #fb923c, #fbbf24)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
-                  color: '#fb923c' // Fallback
+                  color: '#fb923c' 
                 }}>
                   Our Promise
                 </span>
               </h2>
               
-              <p className="text-white italic mb-8" style={{ fontSize: '1.875rem', lineHeight: '2.25rem' }}>
+              <p className="text-white italic mb-6" style={{ fontSize: '1.875rem', lineHeight: '2.25rem' }}>
                 "Innovation, Excellence, Community – That's Our Promise."
+              </p>
+              <p className="text-white/90 text-sm md:text-bg max-w-6xl mx-auto mb-12 leading-relaxed">
+                We are committed to delivering cutting-edge solutions that exceed expectations, while building lasting relationships with our clients and contributing positively to the communities we serve. Every service we provide is backed by years of expertise, unwavering dedication, and round-the-clock support.
               </p>
 
               <div className="grid md:grid-cols-4 gap-12 max-w-4xl mx-auto">
@@ -333,7 +333,6 @@ export default function HomePage() {
 
       <div className="bg-white py-20 relative overflow-hidden">
       <div className="container mx-auto px-6">
-        {/* Title */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -415,7 +414,6 @@ export default function HomePage() {
           ))}
         </div>
 
-        {/* Button */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
