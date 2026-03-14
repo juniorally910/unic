@@ -302,7 +302,7 @@ export default function HomePage() {
 
               <div className="grid md:grid-cols-4 gap-12 max-w-4xl mx-auto">
                 {[
-                  { number: "1+", label: "Years Experience", icon: "🏆" },
+                  { number: "10+", label: "Years Experience", icon: "🏆" },
                   { number: "12", label: "Service Areas", icon: "🎯" },
                   { number: "500+", label: "Happy Clients", icon: "😊" },
                   { number: "24/7", label: "Support Available", icon: "🔧" },
