@@ -107,7 +107,7 @@ export default function ContactPage() {
                 {
                   icon: <Phone className="w-6 h-6 text-white" />,
                   title: "Phone Numbers",
-                  lines: ["+250 788 477 057", "+250 788 500 204", "+250 785 817 599"],
+                  lines: ["+250 788 500 204", "+250 785 817 599"],
                   link: null,
                 },
                 {
